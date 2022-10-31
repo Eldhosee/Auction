@@ -1,0 +1,59 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'auctions/index.css' %}">
+{% endblock link %}
+
+{% block body %}
+<div class="main" >
+    <div class="sign">
+        <div class="text2" >
+          <h1 class="h1">Welcome to</h1> <img class="img_text" src={%static 'auctions/image1.png'%} alt="logo"/><h1 class="h1text">COM</h1>
+        </div>
+        <div class="text1">
+          {% if error %}
+          <div class="alert alert-danger" role="alert">
+              {{error}}
+          </div>
+          {% endif %}
+          {% if user.is_authenticated %}
+              <h2>Hello <strong>{{ user.username }}..</strong>.</h2>
+          {% else %}
+            <h2>Not signed in.</h2>
+          {% endif %} 
+        </div>
+      </div>
+      <div class="image">
+        <img class="image1" src={%static 'auctions/Auction.png'%} alt="image"/>
+      </div>
+        <div class="d-flex justify-content-center">
+            <h2>Active Listings</h2>
+        </div>
+          <a  href="{% url 'create' %}"><button type="submit" class="btn btn-success" id="create">create Listings</button></a>
+        
+        <div class="row mx-auto">
+          {%for i in item%}
+          
+          <div class="card" style="width: 18rem;">
+              <img src="{{i.image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{i.name}}</h5>
+                  <h5 class="card-title">bid:{{i.starting_bid}}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <form method="get" action="{%url 'product_page'%}">
+                    {% csrf_token %}
+                  <input type="hidden" value={{i.id}} name="id">
+                  <input type="submit" class="btn btn-primary" value="view item">
+                  </form>
+                </div>
+          </div>
+          {% endfor %}
+      </div>
+      
+</div>
+   
+    
+
+
+    
+{% endblock %}

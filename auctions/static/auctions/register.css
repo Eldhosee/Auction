@@ -1,0 +1,46 @@
+body{
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+    background-image: linear-gradient(90deg, #A100FFFF 0%, #71C4FFFF 100%);
+}
+.main{
+    
+    padding: 2%;
+    overflow: hidden;
+    background-size: 100% 100%;
+    color: aliceblue;
+    position: relative;
+    z-index: 3;
+}
+.btn{
+    width: 270px;
+    margin-left: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+
+.form{
+    width: 500px;
+    height: 400px;
+    padding: 30px 0 0;
+    margin:4% 0 0 35% ;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+a{
+    color: black;
+}
+.form-group{
+
+    width: 370px;
+    margin-left: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.h2{
+    padding: 0 0 20px;
+    margin: 0 0 1% 40%;
+}

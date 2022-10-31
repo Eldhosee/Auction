@@ -1,0 +1,32 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'auctions/create.css' %}">
+
+{% endblock link %}
+{% block body %}
+<div class="form">
+<form  method="POST" action="{% url 'create' %}">
+  {% csrf_token %}
+  {% if messages %}
+    {% for msg in messages %}
+      <p>{{msg}}</p>
+    {% endfor %}
+  {% endif %}
+
+
+  <div class="card text-center">
+    <h5 class="card-header">Create a List</h5>
+    <div class="card-body">
+      <table>
+        <tr>
+          <td>{{form}}</td>
+        </tr>
+      </table>
+      <input type="submit" class="btn btn-primary" value="create">
+    </div>
+  </div>
+</form>
+</div>
+{% endblock %}
+

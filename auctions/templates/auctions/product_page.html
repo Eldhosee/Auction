@@ -1,0 +1,86 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'auctions/product_page.css' %}">
+{% endblock link %}
+{% block body %}
+<div id="container" class="container-fluid">
+    {% if alert %}
+        <div class="alert alert-danger" role="alert">
+            {{alert}}
+        </div>
+    {% endif %}
+
+    {% if message %}
+    <div class="alert alert-success" role="alert">
+        {{message}}
+      </div>
+    {% endif %}
+    
+<div class="row">
+
+    <div class="col-md-6 float-md-end mb-3 ms-md-3" id="row">
+        
+        {% for i in items  %}
+        <div class="image">
+            <img src="{{i.image}}" class="img-fluid" alt="...">
+        </div>
+        <div class="form1">
+            <form method="post" action="{%url 'product_page'%}">
+                {% csrf_token %}
+                <h1>{{i.name}}</h1>
+                <br>
+                <p>{{i.description}}</p>
+                <div class="col-md-6 float-md-end mb-3 ms-md-3">
+                    <h3>Current Bid is {{i.starting_bid}} Rupees</h3>
+                <input type="number" min={{i.starting_bid}} name="bid" value={{i.starting_bid}}>
+                {% if closed %}
+                {% else %}
+                <br><br>
+                    <input type="submit" class="btn btn-success" value="Bid Now!">
+                {% endif %}
+                <input type="hidden" value="{{i.id}}" name="id">
+            </form>
+            <br><br>
+            <form method="get" action="{%url 'whishlist'%}">
+                <input type="submit" class="btn btn-primary" value="Add to whishlist">
+                <input type="hidden" value="{{i.id}}" name="id">
+            </form>
+        </div>
+        <div class="form2">
+            <form method='POST' action="{%url 'comment'%}" >
+                    {% csrf_token %}
+                    <h3>Comments</h3>
+                    <input type="hidden" value="{{i.id}}" name="id">
+                    <input type="text" class="comment" placeholder="comments" name="comment"/>
+                    <input type="submit"  class="btn btn-primary"value="comment"/>
+                </form>
+            
+            {% if closed == 1 %}
+                <h2 class="h2">Aution closed for {{i.starting_bid}} Rupees</h2>
+
+            {% else %}
+                    {% if same_user %}
+                    <form method="POST" action="{%url 'close_bid'%}">
+                    {% csrf_token %}
+                        <input type="hidden" value="{{i.id}}" name="id">
+                        <input type="submit" class="btn btn-danger" value="close bid">
+                    </form>
+                    {% endif %}
+            {% endif %}
+
+                {% for i in comments  %}
+                <div class="card">
+                    <div class="card-body ">
+                      {{i}}
+                    </div>
+                  </div>
+                <br>
+                {% endfor %}
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+</div>
+{% endblock body %}

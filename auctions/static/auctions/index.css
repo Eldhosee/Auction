@@ -1,0 +1,102 @@
+body{
+    background-size: 100% 100% ;
+    background-position: 0px 0px;
+    background-image: linear-gradient(90deg, #000000FF 0%, #71C4FFFF 100%);  
+}
+.main{
+    overflow: hidden;
+}
+
+.row{
+   margin: 1%;
+   
+}
+.card{
+    margin: 1%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#create{
+    padding: 10px;
+    margin: 0 0 0 45%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+} 
+
+.sign{
+    background: transparent;
+    width: 100%;
+    color: aliceblue;
+   
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+   
+    z-index: 2;
+}
+ .text1{
+    height: 200px;
+    width: 50%;
+    margin-left: 700px;
+    position: absolute;
+    top: 0;
+    z-index: 3;
+   
+}
+.h1{
+    font-size: 100px;
+    padding-bottom: 200px;
+}
+.text2{
+    width: 50%;
+    object-fit: contain;
+    margin: 150px 600px 0 0;
+    overflow: hidden;
+    
+}
+.img_text{
+    height: 100%;
+    position: absolute;
+    left: 70px;
+    top: 120px;
+    z-index: 1;
+}
+.h1text{
+    margin:0 0 0 650px;
+    position: absolute;
+    left: 0;
+    font-weight: 100;
+    color: red;
+    top: 320px;
+    font-size: 70px;
+    
+}
+
+.image{
+    width: 100%;
+    height: 800px;
+    background: black;
+    overflow: hidden;
+    
+}
+.image1{
+    width: 100%;
+    padding-top: 2%;
+    position: absolute;
+    top:45px;
+    height: 700px;
+    opacity: 25%;
+    overflow: hidden;
+    
+}
+.main1{
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}  
+/* @media (min-width=1600px) {
+    .img_text{
+        top:800px
+    }
+    
+} */

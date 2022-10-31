@@ -1,0 +1,22 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block link %}<link rel="stylesheet" href="{% static 'auctions/whishlist.css' %}">
+
+{% endblock link %}
+{% block body %}
+<h1>Your Whishlist</h1>
+<div class="row mx-auto">
+{% for i in items  %}
+    <div class="card" style="width: 18rem;">
+        <img src="{{i.product.image}}" alt="image">
+        <h6>{{i.product}}</h6>
+        <form method='post' action="{%url 'whishlist'%}">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger" value="delete">
+            <input type="hidden" value="{{i.id}}" name="id">
+
+        </form>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
